@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cp1ly6rxkobtj"]
 
 [ext_resource type="Texture2D" uid="uid://d3txqqb00lhy2" path="res://Free/Items/Fruits/Orange.png" id="1_jb2uw"]
-[ext_resource type="Script" uid="uid://cywwe14evwaty" path="res://double_jump.gd" id="1_sikwx"]
+[ext_resource type="Script" uid="uid://cywwe14evwaty" path="res://powerups.gd" id="1_sikwx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sikwx"]
 atlas = ExtResource("1_jb2uw")
