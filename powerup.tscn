@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://cp1ly6rxkobtj"]
+
+[ext_resource type="Texture2D" uid="uid://d3txqqb00lhy2" path="res://Free/Items/Fruits/Orange.png" id="1_jb2uw"]
+[ext_resource type="Script" uid="uid://cywwe14evwaty" path="res://double_jump.gd" id="1_sikwx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sikwx"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lr5i"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55dtu"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m24f"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0hcv"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mstpo"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m22em"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2gco"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cylow"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni6xk"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn6g2"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avehm"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc52x"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78pnr"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r82bl"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtsgw"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pumpl"]
+atlas = ExtResource("1_jb2uw")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epypp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sikwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lr5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55dtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m24f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0hcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mstpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m22em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2gco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cylow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni6xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn6g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc52x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78pnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r82bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtsgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pumpl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jof2b"]
+radius = 8.0
+
+[node name="Area2D" type="Area2D" unique_id=2084590705]
+script = ExtResource("1_sikwx")
+metadata/powerup_id = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=143003280]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=245426836]
+shape = SubResource("CircleShape2D_jof2b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

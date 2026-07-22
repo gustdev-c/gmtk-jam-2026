@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="GMTK-2026-jam"
+run/main_scene="uid://br04wukmwtgr2"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+global="*uid://clyqs52h4nt7e"
 
 [display]
 
