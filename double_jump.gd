@@ -13,6 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 			1:
 				print("Double Jump")
 				global.maxJumps = 2
+				global.canDoubleJump = true
 			2:
 				print("Door")
 			3:
