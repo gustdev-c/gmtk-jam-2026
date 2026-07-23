@@ -12,10 +12,9 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 		match id:
 			1:
-				global.canDoubleJump = 5.0
+				global.canDoubleJump = 10.0
 				print("Double Jump")
 			2:
-				print("Door")
-			3:
-				print("Weapon")
+				global.portalActive = 10.0
+				print("Portal is now active")
 		

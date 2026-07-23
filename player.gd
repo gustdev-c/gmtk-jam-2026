@@ -1,20 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -500.0
+const SPEED = 400.0
+const JUMP_VELOCITY = -550.0
 
 var jumpsLeft = 1
-
-func _process(delta: float) -> void:
-	if global.canDoubleJump > 0.0:
-		global.canDoubleJump = global.canDoubleJump - delta
-		print(global.canDoubleJump)
-	
-						
-	if global.canDoubleJump > 0.0:  
-		global.maxJumps = 2
-	elif global.canDoubleJump <= 0.0:
-		global.maxJumps = 1
 
 func _physics_process(delta: float) -> void:
 
@@ -31,7 +20,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			jumpsLeft = jumpsLeft - 1
 		
-		if not is_on_floor() and global.canDoubleJump and jumpsLeft > 0:
+		if not is_on_floor() and global.canDoubleJump > 0.0 and jumpsLeft > 0:
 			velocity.y = JUMP_VELOCITY
 			jumpsLeft = jumpsLeft - 1
 
