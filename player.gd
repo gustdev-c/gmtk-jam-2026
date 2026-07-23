@@ -5,6 +5,16 @@ const JUMP_VELOCITY = -550.0
 
 var jumpsLeft = 1
 
+func _ready():
+		global.canJump = 0.0
+		global.canDoubleJump = 0.0
+		global.portalActive = 0.0
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
+
+
 func _physics_process(delta: float) -> void:
 
 	
@@ -16,13 +26,15 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
+		if is_on_floor() and global.canJump > 0.0:
 			velocity.y = JUMP_VELOCITY
 			jumpsLeft = jumpsLeft - 1
 		
 		if not is_on_floor() and global.canDoubleJump > 0.0 and jumpsLeft > 0:
 			velocity.y = JUMP_VELOCITY
 			jumpsLeft = jumpsLeft - 1
+			
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("left", "right")
@@ -35,5 +47,5 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 	elif velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false
-
+	
 	move_and_slide()

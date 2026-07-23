@@ -1,0 +1,114 @@
+[gd_scene format=4 uid="uid://3rhxap74x2rf"]
+
+[ext_resource type="TileSet" uid="uid://6gsho60yga8j" path="res://temp_tileset.tres" id="1_hbghi"]
+[ext_resource type="PackedScene" uid="uid://c5a7x5ipvnup7" path="res://player.tscn" id="2_hn12h"]
+[ext_resource type="Shader" uid="uid://cyc33o3tjwvw0" path="res://circle_transition.gdshader" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://cp1ly6rxkobtj" path="res://powerup.tscn" id="4_rka8t"]
+[ext_resource type="PackedScene" uid="uid://dgyd10n34ko31" path="res://portal.tscn" id="5_5hph3"]
+
+[sub_resource type="Animation" id="Animation_rj586"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4d7sh"]
+resource_name = "circle_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ir8iy"]
+resource_name = "circle_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_d21ai"]
+resource_name = "fade_out"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfcg"]
+_data = {
+&"RESET": SubResource("Animation_rj586"),
+&"circle_close": SubResource("Animation_4d7sh"),
+&"circle_open": SubResource("Animation_ir8iy"),
+&"fade_out": SubResource("Animation_d21ai")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rka8t"]
+shader = ExtResource("3_hn12h")
+shader_parameter/circle_size = 0.0
+
+[node name="Level1" type="Node2D" unique_id=1646100533]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1629648447]
+texture_filter = 1
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAIAAMAAAANAAQAAAD9/wMAAAANAAQAAAD+/wMAAAANAAQAAAD//wMAAAANAAQAAAAAAAMAAAANAAQAAAABAAMAAAANAAQAAAACAAMAAAANAAQAAAADAAMAAAANAAQAAAAEAAMAAAANAAQAAAAFAAMAAAANAAQAAAAGAAMAAAANAAQAAAAHAAMAAAANAAQAAAAJAAMAAAANAAQAAAAKAAMAAAANAAQAAAALAAMAAAANAAQAAAAMAAMAAAANAAQAAAANAAMAAAANAAQAAAAOAAMAAAANAAQAAAAPAAMAAAANAAQAAAAQAAMAAAANAAQAAAARAAMAAAANAAQAAAASAAMAAAANAAQAAAATAAMAAAANAAQAAAAUAAMAAAANAAQAAAAVAAMAAAANAAQAAAAWAAMAAAANAAQAAAAXAAMAAAANAAQAAAAYAAMAAAANAAQAAAAZAAMAAAANAAQAAAAaAAMAAAANAAQAAAAbAAMAAAANAAQAAAAcAAMAAAANAAQAAAAdAAMAAAANAAQAAAAeAAMAAAANAAQAAAAfAAMAAAANAAQAAAAgAAMAAAANAAQAAAAhAAMAAAANAAQAAAAiAAMAAAANAAQAAAAjAAMAAAANAAQAAAD8/wMAAAAMAAQAAAD7/wMAAAAAAAIAAAD7//D/AAAAAAAAAAAlAPD/AAACAAAAAAAlAPH/AAACAAEAAAAlAPL/AAACAAEAAAAlAPP/AAACAAEAAAAlAPT/AAACAAEAAAAlAPX/AAACAAEAAAAlAPb/AAACAAEAAAAlAPf/AAACAAEAAAAlAPj/AAACAAEAAAAlAPn/AAACAAEAAAAlAPr/AAACAAEAAAAlAPv/AAACAAEAAAAlAPz/AAACAAEAAAAlAP3/AAACAAEAAAAlAP7/AAACAAEAAAAlAP//AAACAAEAAAAlAAAAAAACAAEAAAAlAAEAAAACAAEAAAAlAAIAAAACAAEAAAAlAAMAAAACAAIAAAAkAAMAAAAOAAQAAAD7//X/AAAAAAEAAAD7//b/AAAAAAEAAAD7//f/AAAAAAEAAAD7//j/AAAAAAEAAAD7//n/AAAAAAEAAAD7//r/AAAAAAEAAAD7//v/AAAAAAEAAAD7//z/AAAAAAEAAAD7//3/AAAAAAEAAAD7//7/AAAAAAEAAAD7////AAAAAAEAAAD7/wAAAAAAAAEAAAD7/wEAAAAAAAEAAAD7/wIAAAAAAAEAAAD7//H/AAAAAAEAAAD7//L/AAAAAAEAAAD7//P/AAAAAAEAAAD7//T/AAAAAAEAAAD8//D/AAABAAAAAAD9//D/AAABAAAAAAD+//D/AAABAAAAAAD///D/AAABAAAAAAAAAPD/AAABAAAAAAABAPD/AAABAAAAAAACAPD/AAABAAAAAAADAPD/AAABAAAAAAAEAPD/AAABAAAAAAAFAPD/AAABAAAAAAAGAPD/AAABAAAAAAAHAPD/AAABAAAAAAAIAPD/AAABAAAAAAAJAPD/AAABAAAAAAAKAPD/AAABAAAAAAALAPD/AAABAAAAAAAMAPD/AAABAAAAAAANAPD/AAABAAAAAAAOAPD/AAABAAAAAAAPAPD/AAABAAAAAAAQAPD/AAABAAAAAAARAPD/AAABAAAAAAASAPD/AAABAAAAAAATAPD/AAABAAAAAAAUAPD/AAABAAAAAAAVAPD/AAABAAAAAAAWAPD/AAABAAAAAAAXAPD/AAABAAAAAAAYAPD/AAABAAAAAAAZAPD/AAABAAAAAAAaAPD/AAABAAAAAAAbAPD/AAABAAAAAAAcAPD/AAABAAAAAAAdAPD/AAABAAAAAAAeAPD/AAABAAAAAAAfAPD/AAABAAAAAAAgAPD/AAABAAAAAAAhAPD/AAABAAAAAAAiAPD/AAABAAAAAAAjAPD/AAABAAAAAAAkAPD/AAABAAAAAAA=")
+tile_set = ExtResource("1_hbghi")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=794653145]
+position = Vector2(796, -176)
+zoom = Vector2(0.56, 0.56)
+
+[node name="CharacterBody2D" parent="." unique_id=1090762131 instance=ExtResource("2_hn12h")]
+position = Vector2(-104, 115)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1636293221]
+libraries/ = SubResource("AnimationLibrary_ihfcg")
+autoplay = &"circle_open"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=206505535]
+visible = false
+top_level = true
+material = SubResource("ShaderMaterial_rka8t")
+offset_left = -296.0
+offset_top = 448.0
+offset_right = -247.74855
+offset_bottom = 536.57745
+scale = Vector2(46.02971, -14.281285)
+color = Color(0, 0, 0, 1)
+
+[node name="Area2D" parent="." unique_id=2084590705 instance=ExtResource("4_rka8t")]
+position = Vector2(1425, 124)
+metadata/powerup_id = 2
+
+[node name="Area2D2" parent="." unique_id=1376985407 instance=ExtResource("4_rka8t")]
+position = Vector2(1364, 124)
+
+[node name="Area2D3" parent="." unique_id=637419964 instance=ExtResource("4_rka8t")]
+position = Vector2(1298, 131)
+metadata/powerup_id = 3
+
+[node name="Portal" parent="." unique_id=938182552 instance=ExtResource("5_5hph3")]
+position = Vector2(1555, 82)
+scale = Vector2(2, 2)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="Portal" method="_on_animation_player_animation_finished"]

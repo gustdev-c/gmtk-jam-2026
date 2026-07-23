@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://c6g3xmvaoqkyo"]
+
+[ext_resource type="Texture2D" uid="uid://c7hra35nrbxki" path="res://Free/Background/Blue.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dbcpbehbv27rj" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="AudioStream" uid="uid://bcg0woq3exe7s" path="res://main menu music.mp3" id="2_7vrkn"]
+[ext_resource type="FontFile" uid="uid://8roggeenj5ye" path="res://quaver.ttf" id="2_jix8l"]
+[ext_resource type="Shader" uid="uid://cyc33o3tjwvw0" path="res://circle_transition.gdshader" id="5_glbon"]
+
+[sub_resource type="Animation" id="Animation_rj586"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4d7sh"]
+resource_name = "circle_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ir8iy"]
+resource_name = "circle_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_d21ai"]
+resource_name = "fade_out"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nlkkf"]
+_data = {
+&"RESET": SubResource("Animation_rj586"),
+&"circle_close": SubResource("Animation_4d7sh"),
+&"circle_open": SubResource("Animation_ir8iy"),
+&"fade_out": SubResource("Animation_d21ai")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qe12f"]
+shader = ExtResource("5_glbon")
+shader_parameter/circle_size = 0.0
+
+[node name="MainMenu" type="Control" unique_id=834678871]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_fu7sn")
+
+[node name="Button" type="Button" parent="." unique_id=1953336299]
+top_level = true
+layout_mode = 0
+offset_left = 100.0
+offset_top = 294.0
+offset_right = 492.0
+offset_bottom = 361.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_jix8l")
+theme_override_font_sizes/font_size = 24
+action_mode = 0
+text = "START"
+
+[node name="Button2" type="Button" parent="." unique_id=1951037886]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 374.0
+offset_right = 488.0
+offset_bottom = 441.0
+theme_override_fonts/font = ExtResource("2_jix8l")
+theme_override_font_sizes/font_size = 24
+text = "SETTINGS"
+
+[node name="Button3" type="Button" parent="." unique_id=828212964]
+top_level = true
+layout_mode = 0
+offset_left = 93.0
+offset_top = 453.0
+offset_right = 485.0
+offset_bottom = 520.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_jix8l")
+theme_override_font_sizes/font_size = 24
+text = "QUIT"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=434976845]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 128.0
+offset_right = 980.0
+offset_bottom = 224.0
+theme_override_fonts/normal_font = ExtResource("2_jix8l")
+theme_override_font_sizes/normal_font_size = 96
+text = "TEMPORUINARY
+"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=694881830]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_06t4h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1098062346]
+stream = ExtResource("2_7vrkn")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1227915092]
+libraries/ = SubResource("AnimationLibrary_nlkkf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=271046689]
+visible = false
+top_level = true
+material = SubResource("ShaderMaterial_qe12f")
+layout_mode = 0
+offset_left = -164.0
+offset_top = 754.0
+offset_right = -132.3031
+offset_bottom = 817.6497
+scale = Vector2(46.02971, -14.281285)
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

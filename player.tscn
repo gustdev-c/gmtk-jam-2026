@@ -104,5 +104,3 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1419053320]
 position = Vector2(2, 7)
 shape = SubResource("CapsuleShape2D_xhbcc")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=271496988]
