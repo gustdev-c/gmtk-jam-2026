@@ -5,7 +5,7 @@ const JUMP_VELOCITY = -500.0
 
 var jumpsLeft = 1
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if global.canDoubleJump > 0.0:
 		global.canDoubleJump = global.canDoubleJump - delta
 		print(global.canDoubleJump)
@@ -15,6 +15,9 @@ func _physics_process(delta: float) -> void:
 		global.maxJumps = 2
 	elif global.canDoubleJump <= 0.0:
 		global.maxJumps = 1
+
+func _physics_process(delta: float) -> void:
+
 	
 	# Add the gravity.
 	if not is_on_floor():

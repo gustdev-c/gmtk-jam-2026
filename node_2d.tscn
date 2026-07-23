@@ -201,7 +201,7 @@ tile_set = SubResource("TileSet_jof2b")
 position = Vector2(-173, -35)
 
 [node name="Area2D" parent="." unique_id=2084590705 instance=ExtResource("4_0hol4")]
-position = Vector2(840, 150)
+position = Vector2(526, 162)
 
 [node name="Label" type="Label" parent="." unique_id=1422093863]
 offset_left = 551.0
